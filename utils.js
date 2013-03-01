@@ -20,7 +20,7 @@ exports.genRoomKey = function() {
 };
 
 /*
- * Room name is valid
+ * deal name is valid
  */
 
 exports.validRoomName = function(req, res, fn) {
@@ -35,7 +35,7 @@ exports.validRoomName = function(req, res, fn) {
 };
 
 /*
- * Checks if room exists
+ * Checks if deal exists
  */
 exports.roomExists = function(req, res, client, fn) {
   client.hget('balloons:rooms:keys', encodeURIComponent(req.body.room_name), function(err, roomKey) {
@@ -56,7 +56,7 @@ exports.createRoom = function(req, res, client) {
         key: roomKey,
         name: req.body.room_name,
         admin: req.user.provider + ":" + req.user.username,
-        locked: 0,
+	locked: 0,
         online: 0
       };
 
@@ -72,7 +72,7 @@ exports.createRoom = function(req, res, client) {
 };
 
 /*
- * Get Room Info
+ * Get Deal Info
  */
 
 exports.getRoomInfo = function(req, res, client, fn) { 
@@ -112,7 +112,7 @@ exports.getPublicRoomsInfo = function(client, fn) {
   });
 };
 /*
- * Get connected users at room
+ * Get connected users at a deal
  */
 
 exports.getUsersInRoom = function(req, res, client, room, fn) {
